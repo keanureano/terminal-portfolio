@@ -38,8 +38,8 @@ function Terminal() {
       <h1 className="font-black text-5xl">KEANU REAÑO</h1>
       <br />
       <strong>Welcome!</strong> <br />
-      Type 'help' to see commands. <br />
-      Type {"'ask <question>'"} to learn more about me. <br />
+      Type &#39;help&#39; to see commands. <br />
+      Type &#39;ask &lt;question&gt;&#39; to learn more about me. <br />
       <br />
       <strong>Try typing these:</strong>
       <ul>
