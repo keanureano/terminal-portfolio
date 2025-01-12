@@ -44,8 +44,8 @@ function Terminal() {
       <strong>Try typing these:</strong>
       <ul>
         <li>- ask who are you?</li>
-        <li>- ask what are your skills?</li>
-        <li>- ask how can I contact you?</li>
+        <li>- ask what makes you stand out?</li>
+        <li>- ask how can i contact you?</li>
       </ul>
       <br />
     </div>
