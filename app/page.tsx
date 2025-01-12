@@ -29,7 +29,7 @@ export default function Home() {
 
 function Terminal() {
   const commands = {
-    help: () => `Available commands: about, career, ask <question>, clear`,
+    help: () => `Available commands: help, ask <question>, clear`,
     ask: async (query: string) => await gpt(query),
   };
 
