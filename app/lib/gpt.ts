@@ -15,7 +15,7 @@ export async function gpt(prompt: string) {
       content: prompt,
     });
 
-    let run = await openai.beta.threads.runs.createAndPoll(thread.id, {
+    const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
       assistant_id: assistant.id,
     });
 
