@@ -48,7 +48,6 @@ function Terminal() {
         <li>- ask how can I contact you?</li>
       </ul>
       <br />
-      hel
     </div>
   );
 
