@@ -38,15 +38,17 @@ function Terminal() {
       <h1 className="font-black text-5xl">KEANU REAÑO</h1>
       <br />
       <strong>Welcome!</strong> <br />
-      Type <code>help</code> to see commands. <br />
-      Type <code>ask {"<question>"}</code> to learn more about me. <br />
+      Type 'help' to see commands. <br />
+      Type {"'ask <question>'"} to learn more about me. <br />
       <br />
-      <strong>Try these:</strong>
+      <strong>Try typing these:</strong>
       <ul>
-        <li>- ask who are you</li>
-        <li>- ask what are your skills</li>
-        <li>- ask how can I contact you</li>
+        <li>- ask who are you?</li>
+        <li>- ask what are your skills?</li>
+        <li>- ask how can I contact you?</li>
       </ul>
+      <br />
+      hel
     </div>
   );
 
