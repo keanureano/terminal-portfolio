@@ -31,9 +31,9 @@ export default function Home() {
           <br />
           - ask who are you?
           <br />
-          - ask what&apos;s your biggest strength?
+          - ask what&apos;s your experience?
           <br />
-          - ask what tools do you use?
+          - ask how did your career start?
           <br />
           - ask what&apos;s your favorite project?
           <br />- ask how can i contact you?
