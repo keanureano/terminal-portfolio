@@ -18,12 +18,12 @@ export default function Home() {
         </pre>
         <br />
         <span>
-          Type <strong>'help'</strong> for more information.
+          Type <strong>&apos;help&apos;</strong> for more information.
         </span>
         <br />
         <span>
-          Alternatively, type <strong>'ask &lt;question&gt;'</strong> to get an
-          answer.
+          Alternatively, type <strong>&apos;ask &lt;question&gt;&apos;</strong>{" "}
+          to get an answer.
         </span>
         <br />
         <span>
@@ -76,29 +76,17 @@ Currently working with US-based companies, consistently delivering high-quality 
       case trimmedInput.startsWith("ask "): {
         const question = input.slice(4).trim(); // Extract the question after "ask "
 
-        // Define an array of randomized "thinking" messages
-        const thinkingMessages = [
-          "Hang on, give me a few seconds to think...",
-          "Hold on, this will just take a few seconds...",
-          "Just a moment, this needs a few seconds...",
-          "Hang tight, I'll have it in a few seconds...",
-          "Let me think, this might take a few seconds...",
-        ];
+        // Add a thinking message to the terminal
+        addSystemResponseToTerminal(<span className="animate-pulse">...</span>);
 
-        // Pick a random message
-        const randomThinkingMessage =
-          thinkingMessages[Math.floor(Math.random() * thinkingMessages.length)];
-
-        // Add a delayed random thinking message to the terminal
-        setTimeout(() => {
-          addSystemResponseToTerminal(randomThinkingMessage);
-        }, 200);
-
-        // Simulate the GPT processing (replace with your actual GPT function)
+        // Process the question with GPT
         const response = await gpt(question);
 
+        // Remove the thinking message
+        setTerminalMessages((prevMessages) => prevMessages.slice(0, -1));
+
         // Add the GPT response to the terminal
-        return response;
+        return <span className="max-w-full text-wrap">{response}</span>;
       }
 
       default:
