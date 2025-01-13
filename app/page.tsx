@@ -106,7 +106,7 @@ Currently working with US-based companies, consistently delivering high-quality 
   // Function to add the user input to the terminal
   const addUserInputToTerminal = (input: string) => {
     setTerminalMessages((prevMessages) => {
-      const maxMessages = 10;
+      const maxMessages = 20;
 
       // Keep only the last `maxMessages - 1` messages
       const trimmedMessages = prevMessages.slice(-maxMessages + 1);
