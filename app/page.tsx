@@ -164,7 +164,7 @@ I specialize in:
   return (
     <div className="mx-auto max-w-5xl">
       <Terminal
-        name="Keanu Reaño Portfolio"
+        name=""
         colorMode={ColorMode.Dark}
         onInput={(input) => handleTerminalInput(input)}
       >

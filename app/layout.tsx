@@ -3,7 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Keanu Reaño",
-  description: "Terminal-based Portfolio",
+  description:
+    "A terminal-based portfolio website with a built-in GPT chatbot for answering questions.",
 };
 
 export default function RootLayout({
