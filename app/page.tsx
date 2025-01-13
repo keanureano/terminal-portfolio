@@ -2,20 +2,13 @@
 import { JSX, useState } from "react";
 import Terminal, { ColorMode, TerminalOutput } from "react-terminal-ui";
 import { gpt } from "./lib/gpt";
+import Image from "next/image";
 
 export default function Home() {
   const welcomeMessage = (
     <TerminalOutput key={0}>
       <span>
-        <pre className="text-xxs md:text-xs">
-          {`
-██   ██ ███████  █████  ███    ██ ██    ██     ██████  ███████  █████  ███    ██  ██████  
-██  ██  ██      ██   ██ ████   ██ ██    ██     ██   ██ ██      ██   ██ ████   ██ ██    ██ 
-█████   █████   ███████ ██ ██  ██ ██    ██     ██████  █████   ███████ ██ ██  ██ ██    ██ 
-██  ██  ██      ██   ██ ██  ██ ██ ██    ██     ██   ██ ██      ██   ██ ██  ██ ██ ██    ██ 
-██   ██ ███████ ██   ██ ██   ████  ██████      ██   ██ ███████ ██   ██ ██   ████  ██████  
-`}
-        </pre>
+        <Image src="/welcome.svg" alt="Welcome" width={500} height={500} />
         <br />
         <span>
           Type <strong>&apos;help&apos;</strong> for more information.
