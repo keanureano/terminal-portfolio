@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       fontSize: {
-        xxs: ["0.4rem", { lineHeight: "0.4rem" }],
+        xxs: ["0.25rem", { lineHeight: "0.25rem" }],
       },
       colors: {
         background: "var(--background)",
