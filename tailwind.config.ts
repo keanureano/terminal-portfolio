@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontSize: {
+        xxs: ["0.4rem", { lineHeight: "0.4rem" }],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
