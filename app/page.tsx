@@ -27,7 +27,16 @@ export default function Home() {
         </span>
         <br />
         <span>
-          For example: <strong>ask who are you?</strong>
+          For example:
+          <br />
+          - ask who are you?
+          <br />
+          - ask what&apos;s your biggest strength?
+          <br />
+          - ask what tools do you use?
+          <br />
+          - ask what&apos;s your favorite project?
+          <br />- ask how can i contact you?
         </span>
       </span>
     </TerminalOutput>
@@ -150,10 +159,9 @@ Currently working with US-based companies, consistently delivering high-quality 
   return (
     <div>
       <Terminal
-        name="KEANU REAÑO"
+        name="Keanu Reaño Portfolio"
         colorMode={ColorMode.Dark}
         onInput={(input) => handleTerminalInput(input)}
-        height="100dvh"
       >
         {terminalMessages}
       </Terminal>
