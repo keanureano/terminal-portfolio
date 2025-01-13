@@ -7,13 +7,22 @@ export default function Home() {
   const welcomeMessage = (
     <TerminalOutput key={0}>
       <span>
-        <pre className="text-xs">
+        <pre className="text-xs hidden md:block">
           {`
 ██   ██ ███████  █████  ███    ██ ██    ██     ██████  ███████  █████  ███    ██  ██████  
 ██  ██  ██      ██   ██ ████   ██ ██    ██     ██   ██ ██      ██   ██ ████   ██ ██    ██ 
 █████   █████   ███████ ██ ██  ██ ██    ██     ██████  █████   ███████ ██ ██  ██ ██    ██ 
 ██  ██  ██      ██   ██ ██  ██ ██ ██    ██     ██   ██ ██      ██   ██ ██  ██ ██ ██    ██ 
 ██   ██ ███████ ██   ██ ██   ████  ██████      ██   ██ ███████ ██   ██ ██   ████  ██████  
+`}
+        </pre>
+        <pre className="text-xs block md:hidden">
+          {`
+██   ██ ███████  █████  ███    ██ ██    ██ 
+██  ██  ██      ██   ██ ████   ██ ██    ██ 
+█████   █████   ███████ ██ ██  ██ ██    ██ 
+██  ██  ██      ██   ██ ██  ██ ██ ██    ██ 
+██   ██ ███████ ██   ██ ██   ████  ██████  
 `}
         </pre>
         <br />
@@ -168,7 +177,7 @@ I specialize in:
         colorMode={ColorMode.Dark}
         onInput={(input) => handleTerminalInput(input)}
       >
-        {terminalMessages}
+        <span className="text-sm md:text-lg">{terminalMessages}</span>
       </Terminal>
     </div>
   );
