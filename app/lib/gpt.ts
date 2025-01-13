@@ -27,9 +27,8 @@ export async function gpt(prompt: string) {
       if (firstContent && "text" in firstContent && firstContent.text) {
         const result = firstContent.text.value;
 
-        // Remove patterns like [brackets]
         const filtered_result = result
-          .replace(/【\d+:\d+†source】/g, "")
+          .replace(/【.*?】/g, "") // Matches any text within 【 and 】
           .trim();
 
         return filtered_result;
