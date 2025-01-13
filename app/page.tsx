@@ -26,7 +26,7 @@ export default function Home() {
           to get an answer.
         </span>
         <br />
-        <span>
+        <span className="text-[#a2a2a2]">
           For example:
           <br />
           - ask who are you?
@@ -55,24 +55,29 @@ export default function Home() {
           <span>
             about - Learn more about me
             <br />
-            contact - Get my contact information
+            ask &lt;question&gt; - Ask me a question
             <br />
             clear - Clear the terminal
             <br />
-            ask &lt;question&gt; - Ask me a question
+            contact - Get my contact information
           </span>
         );
 
       case trimmedInput === "about":
-        return `Full Stack Developer with 2+ years of professional experience building modern web applications and automation solutions.
-Currently working with US-based companies, consistently delivering high-quality results. I specialize in:
+        return (
+          <span className="text-balance">
+            {`Full Stack Developer with 2+ years of professional experience building modern web applications and automation solutions.
+Currently working with US-based companies, consistently delivering high-quality results.
+I specialize in:
 • Full-stack web development using Next.js, TypeScript, and Node.js
 • AI development with expertise in GPT API fine-tuning and custom AI LLM apps
 • Backend development with FastAPI, Express.js, and Spring Boot
 • Automation and web scraping using Python, Playwright, and Puppeteer
 • Database management (SQL, PostgreSQL, Firebase)
 • Cloud deployment (AWS, Google Cloud)
-• CI/CD implementation with GitHub Actions and Docker`;
+• CI/CD implementation with GitHub Actions and Docker`}
+          </span>
+        );
 
       case trimmedInput === "contact":
         return "You can contact me at: reanokeanu@gmail.com";
@@ -95,7 +100,7 @@ Currently working with US-based companies, consistently delivering high-quality 
         setTerminalMessages((prevMessages) => prevMessages.slice(0, -1));
 
         // Add the GPT response to the terminal
-        return <span className="max-w-full text-wrap">{response}</span>;
+        return <span className="max-w-full text-balance">{response}</span>;
       }
 
       default:
@@ -157,7 +162,7 @@ Currently working with US-based companies, consistently delivering high-quality 
   };
 
   return (
-    <div>
+    <div className="mx-auto max-w-5xl">
       <Terminal
         name="Keanu Reaño Portfolio"
         colorMode={ColorMode.Dark}
