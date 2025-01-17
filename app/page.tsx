@@ -16,7 +16,7 @@ export default function Home() {
         </span>
         <br />
         <span>
-          Type <strong>&apos;ask &lt;question&gt;&apos;</strong> to talk to my
+          Type <strong>&apos;ask who are you?&apos;</strong> to talk to my
           chatbot.
         </span>
         <br />
