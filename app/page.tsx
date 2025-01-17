@@ -15,22 +15,10 @@ export default function Home() {
         </span>
         <br />
         <span>
-          Alternatively, type <strong>&apos;ask &lt;question&gt;&apos;</strong>{" "}
-          to get an answer.
+          Type <strong>&apos;ask &lt;question&gt;&apos;</strong>{" "}
+          to talk to my chatbot.
         </span>
         <br />
-        <span className="text-[#a2a2a2]">
-          For example:
-          <br />
-          - ask who are you?
-          <br />
-          - ask what&apos;s your experience?
-          <br />
-          - ask how did your career start?
-          <br />
-          - ask what&apos;s your favorite project?
-          <br />- ask how can i contact you?
-        </span>
       </span>
     </TerminalOutput>
   );
