@@ -3,6 +3,7 @@ import { JSX, useState } from "react";
 import Terminal, { ColorMode, TerminalOutput } from "react-terminal-ui";
 import { gpt } from "./lib/gpt";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const welcomeMessage = (
@@ -15,8 +16,8 @@ export default function Home() {
         </span>
         <br />
         <span>
-          Type <strong>&apos;ask &lt;question&gt;&apos;</strong>{" "}
-          to talk to my chatbot.
+          Type <strong>&apos;ask &lt;question&gt;&apos;</strong> to talk to my
+          chatbot.
         </span>
         <br />
       </span>
@@ -33,39 +34,19 @@ export default function Home() {
     switch (true) {
       case trimmedInput === "help":
         return (
-          <span>
-            about - Learn more about me
+          <>
+            <strong>ask &lt;question&gt;</strong> {"   "}Ask me a question
             <br />
-            ask &lt;question&gt; - Ask me a question
+            <strong>resume</strong> {"           "}View my resume
             <br />
-            clear - Clear the terminal
+            <strong>about</strong> {"            "}Learn more about me
             <br />
-            contact - Get my contact information
-          </span>
+            <strong>contact</strong> {"          "}Get my contact information
+            <br />
+            <strong>clear</strong> {"            "}Clear the terminal
+            <br />
+          </>
         );
-
-      case trimmedInput === "about":
-        return (
-          <span className="text-balance">
-            {`Full Stack Developer with 2+ years of professional experience building modern web applications and automation solutions.
-Currently working with US-based companies, consistently delivering high-quality results.
-I specialize in:
-• Full-stack web development using Next.js, TypeScript, and Node.js
-• AI development with expertise in GPT API fine-tuning and custom AI LLM apps
-• Backend development with FastAPI, Express.js, and Spring Boot
-• Automation and web scraping using Python, Playwright, and Puppeteer
-• Database management (SQL, PostgreSQL, Firebase)
-• Cloud deployment (AWS, Google Cloud)
-• CI/CD implementation with GitHub Actions and Docker`}
-          </span>
-        );
-
-      case trimmedInput === "contact":
-        return "You can contact me at: reanokeanu@gmail.com";
-
-      case trimmedInput === "clear":
-        setTerminalMessages([welcomeMessage]); // Clear the terminal
-        return; // No message needed for clear
 
       // Handle the "ask <question>" command
       case trimmedInput.startsWith("ask "): {
@@ -83,6 +64,66 @@ I specialize in:
         // Add the GPT response to the terminal
         return <span className="max-w-full text-balance">{response}</span>;
       }
+
+      // Process the "resume" command
+      case trimmedInput === "resume":
+        return (
+          <span>
+            <Link
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500"
+            >
+              Resume
+            </Link>
+          </span>
+        );
+
+      case trimmedInput === "about":
+        return (
+          <span className="text-balance">
+            Full Stack Developer with 2+ years' experience in building web apps
+            and automation. Proven track record with US-based companies,
+            delivering high-quality results.
+          </span>
+        );
+
+      case trimmedInput === "contact":
+        return (
+          <>
+            <Link
+              href="mailto:reanokeanu@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500"
+            >
+              Email
+            </Link>
+            <br />
+            <Link
+              href="https://linkedin.com/in/keanureano"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500"
+            >
+              LinkedIn
+            </Link>
+            <br />
+            <Link
+              href="https://github.com/keanureano"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500"
+            >
+              GitHub
+            </Link>
+          </>
+        );
+
+      case trimmedInput === "clear":
+        setTerminalMessages([welcomeMessage]); // Clear the terminal
+        return; // No message needed for clear
 
       default:
         return `Command not found: ${input}`;
