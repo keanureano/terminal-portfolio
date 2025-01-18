@@ -1,6 +1,6 @@
 const HelpCommand = () => (
   <>
-    <strong>ask &lt;question&gt;</strong> {"   "}Ask me a question
+    <strong>&lt;question&gt;</strong> {"       "}Ask me a question
     <br />
     <strong>resume</strong> {"           "}View my resume
     <br />
