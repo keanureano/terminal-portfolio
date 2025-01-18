@@ -2,128 +2,42 @@
 import { JSX, useState } from "react";
 import Terminal, { ColorMode, TerminalOutput } from "react-terminal-ui";
 import { gpt } from "./lib/gpt";
-import Image from "next/image";
-import Link from "next/link";
+import welcomeMessage from "./components/WelcomeMessage";
+import HelpCommand from "./components/HelpCommand";
+import ResumeCommand from "./components/ResumeCommand";
+import AboutCommand from "./components/AboutCommand";
+import ContactCommand from "./components/ContactCommand";
 
 export default function Home() {
-  const welcomeMessage = (
-    <TerminalOutput key={0}>
-      <span>
-        <Image src="/welcome.svg" alt="Welcome" width={500} height={500} />
-        <br />
-        <span>
-          Type <strong>&apos;help&apos;</strong> for more information.
-        </span>
-        <br />
-        <span>
-          Type <strong>&apos;hello world!&apos;</strong> to talk to my chatbot.
-        </span>
-        <br />
-      </span>
-    </TerminalOutput>
-  );
-
   const [terminalMessages, setTerminalMessages] = useState([welcomeMessage]);
 
-  // Function to process commands
   const processCommmand = async (input: string) => {
     const trimmedInput = input.trim().toLowerCase();
 
-    // Handle specific commands
-    switch (true) {
-      case trimmedInput === "help":
-        return (
-          <>
-            <strong>ask &lt;question&gt;</strong> {"   "}Ask me a question
-            <br />
-            <strong>resume</strong> {"           "}View my resume
-            <br />
-            <strong>about</strong> {"            "}Learn more about me
-            <br />
-            <strong>contact</strong> {"          "}Get my contact information
-            <br />
-            <strong>clear</strong> {"            "}Clear the terminal
-            <br />
-          </>
-        );
+    switch (trimmedInput) {
+      case "help":
+        return <HelpCommand />;
 
-      // Process the "resume" command
-      case trimmedInput === "resume":
-        return (
-          <span>
-            <Link
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500"
-            >
-              Resume
-            </Link>
-          </span>
-        );
+      case "resume":
+        return <ResumeCommand />;
 
-      case trimmedInput === "about":
-        return (
-          <span className="text-balance">
-            Full Stack Developer with {new Date().getFullYear() - 2022} years of
-            experience in building web apps and automation. Proven track record
-            with US-based companies, delivering high-quality results.
-          </span>
-        );
+      case "about":
+        return <AboutCommand />;
 
-      case trimmedInput === "contact":
-        return (
-          <>
-            <Link
-              href="mailto:reanokeanu@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500"
-            >
-              Email
-            </Link>
-            <br />
-            <Link
-              href="https://linkedin.com/in/keanureano"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500"
-            >
-              LinkedIn
-            </Link>
-            <br />
-            <Link
-              href="https://github.com/keanureano"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500"
-            >
-              GitHub
-            </Link>
-          </>
-        );
+      case "contact":
+        return <ContactCommand />;
 
-      case trimmedInput === "clear":
-        setTerminalMessages([welcomeMessage]); // Clear the terminal
-        return; // No message needed for clear
+      case "clear":
+        setTerminalMessages([welcomeMessage]);
+        return;
 
       default:
-        if (!trimmedInput) {
-          return; // No message needed for empty input
-        }
-
-        // Add a thinking message to the terminal
+        if (!trimmedInput) return;
         addSystemResponseToTerminal(
           <span className="animate-pulse">Thinking... Please wait.</span>
         );
-
-        // Process the question with GPT
         const response = await gpt(trimmedInput);
-
-        // Remove the thinking message
         setTerminalMessages((prevMessages) => prevMessages.slice(0, -1));
-
-        // Add the GPT response to the terminal
         return <span className="max-w-full text-balance">{response}</span>;
     }
   };
@@ -132,11 +46,8 @@ export default function Home() {
   const addUserInputToTerminal = (input: string) => {
     setTerminalMessages((prevMessages) => {
       const maxMessages = 20;
-
-      // Keep only the last `maxMessages - 1` messages
       const trimmedMessages = prevMessages.slice(-maxMessages + 1);
 
-      // Add the user's input as a terminal message
       const userInputMessage = (
         <TerminalOutput key={`input-${Date.now()}`}>
           <span className="text-[#a2a2a2]">
@@ -155,29 +66,26 @@ export default function Home() {
     setTerminalMessages((prevMessages) => {
       const maxMessages = 10;
 
-      // Keep only the last `maxMessages - 1` messages (excluding the defaultMessage)
       const trimmedMessages = prevMessages
         .filter((msg) => msg.key !== welcomeMessage.key)
         .slice(-maxMessages + 1);
 
-      // Add the system's response as a terminal message
       const systemResponseMessage = (
         <TerminalOutput key={`response-${Date.now()}`}>
           {response}
         </TerminalOutput>
       );
 
-      // Always prepend the defaultMessage
       return [welcomeMessage, ...trimmedMessages, systemResponseMessage];
     });
   };
 
   // Main function to handle terminal input
   const handleTerminalInput = async (input: string) => {
-    addUserInputToTerminal(input); // Step 1: Add user input
-    const response = await processCommmand(input); // Step 2: Generate response
+    addUserInputToTerminal(input);
+    const response = await processCommmand(input);
     if (response !== undefined) {
-      addSystemResponseToTerminal(response); // Step 3: Add response to terminal
+      addSystemResponseToTerminal(response);
     }
   };
 
