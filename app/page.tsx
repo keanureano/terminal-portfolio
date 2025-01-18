@@ -16,8 +16,7 @@ export default function Home() {
         </span>
         <br />
         <span>
-          Type <strong>&apos;ask hello world!&apos;</strong> to talk to my
-          chatbot.
+          Type <strong>&apos;hello world!&apos;</strong> to talk to my chatbot.
         </span>
         <br />
       </span>
@@ -47,23 +46,6 @@ export default function Home() {
             <br />
           </>
         );
-
-      // Handle the "ask <question>" command
-      case trimmedInput.startsWith("ask "): {
-        const question = input.slice(4).trim(); // Extract the question after "ask "
-
-        // Add a thinking message to the terminal
-        addSystemResponseToTerminal(<span className="animate-pulse">...</span>);
-
-        // Process the question with GPT
-        const response = await gpt(question);
-
-        // Remove the thinking message
-        setTerminalMessages((prevMessages) => prevMessages.slice(0, -1));
-
-        // Add the GPT response to the terminal
-        return <span className="max-w-full text-balance">{response}</span>;
-      }
 
       // Process the "resume" command
       case trimmedInput === "resume":
@@ -126,7 +108,23 @@ export default function Home() {
         return; // No message needed for clear
 
       default:
-        return `Command not found: ${input}`;
+        if (!trimmedInput) {
+          return; // No message needed for empty input
+        }
+
+        // Add a thinking message to the terminal
+        addSystemResponseToTerminal(
+          <span className="animate-pulse">Thinking... Please wait.</span>
+        );
+
+        // Process the question with GPT
+        const response = await gpt(trimmedInput);
+
+        // Remove the thinking message
+        setTerminalMessages((prevMessages) => prevMessages.slice(0, -1));
+
+        // Add the GPT response to the terminal
+        return <span className="max-w-full text-balance">{response}</span>;
     }
   };
 
